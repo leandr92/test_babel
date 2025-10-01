@@ -10620,28 +10620,7 @@
 
   	var replace = uncurryThis(''.replace);
   	var ltrim = RegExp('^[' + whitespaces + ']+');
-  	var rtrim = RegExp('(^|[^' + whitespaces + '])[' + whitespaces + ']+
-
-    <!--
-      Thanks for trying out our BPMN toolkit!
-
-      This example uses the pre-built distribution of the bpmn-js modeler.
-      Consider rolling your own distribution to have more flexibility
-      regarding which features to include.
-
-      Checkout our advanced examples section to learn more:
-      * https://github.com/bpmn-io/bpmn-js-examples#advanced
-
-      To get a bit broader overview over how bpmn-js works,
-      follow our walkthrough:
-      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
-
-      Related starters:
-      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/viewer.html
-    -->
-  </body>
-</html>
-);
+  	var rtrim = RegExp('(^|[^' + whitespaces + '])[' + whitespaces + ']+$');
 
   	// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
   	var createMethod = function (TYPE) {
@@ -12740,10 +12719,10 @@
 
   	var PromiseCapability = function (C) {
   	  var resolve, reject;
-  	  this.promise = new C(function ($resolve, $reject) {
+  	  this.promise = new C(function ($$resolve, $$reject) {
   	    if (resolve !== undefined || reject !== undefined) throw new $TypeError('Bad Promise constructor');
-  	    resolve = $resolve;
-  	    reject = $reject;
+  	    resolve = $$resolve;
+  	    reject = $$reject;
   	  });
   	  this.resolve = aCallable(resolve);
   	  this.reject = aCallable(reject);
@@ -16761,8 +16740,8 @@
   	var replace = uncurryThis(''.replace);
   	var stringSlice = uncurryThis(''.slice);
   	// eslint-disable-next-line redos/no-vulnerable -- safe
-  	var SUBSTITUTION_SYMBOLS = /\$([<!-- INLINE_BUNDLE -->'`]|\d{1,2}|<[^>]*>)/g;
-  	var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([<!-- INLINE_BUNDLE -->'`]|\d{1,2})/g;
+  	var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d{1,2}|<[^>]*>)/g;
+  	var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d{1,2})/g;
 
   	// `GetSubstitution` abstract operation
   	// https://tc39.es/ecma262/#sec-getsubstitution
@@ -16777,49 +16756,7 @@
   	  return replace(replacement, symbols, function (match, ch) {
   	    var capture;
   	    switch (charAt(ch, 0)) {
-  	      case '
-
-    <!--
-      Thanks for trying out our BPMN toolkit!
-
-      This example uses the pre-built distribution of the bpmn-js modeler.
-      Consider rolling your own distribution to have more flexibility
-      regarding which features to include.
-
-      Checkout our advanced examples section to learn more:
-      * https://github.com/bpmn-io/bpmn-js-examples#advanced
-
-      To get a bit broader overview over how bpmn-js works,
-      follow our walkthrough:
-      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
-
-      Related starters:
-      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/viewer.html
-    -->
-  </body>
-</html>
-: return '
-
-    <!--
-      Thanks for trying out our BPMN toolkit!
-
-      This example uses the pre-built distribution of the bpmn-js modeler.
-      Consider rolling your own distribution to have more flexibility
-      regarding which features to include.
-
-      Checkout our advanced examples section to learn more:
-      * https://github.com/bpmn-io/bpmn-js-examples#advanced
-
-      To get a bit broader overview over how bpmn-js works,
-      follow our walkthrough:
-      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
-
-      Related starters:
-      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/viewer.html
-    -->
-  </body>
-</html>
-;
+  	      case '$': return '$';
   	      case '&': return matched;
   	      case '`': return stringSlice(str, 0, position);
   	      case "'": return stringSlice(str, tailPos);
@@ -16879,7 +16816,7 @@
   	  return it === undefined ? it : String(it);
   	};
 
-  	// IE <= 11 replaces $0 with the whole match, as if it was <!-- INLINE_BUNDLE -->
+  	// IE <= 11 replaces $0 with the whole match, as if it was $&
   	// https://stackoverflow.com/questions/6024666/getting-ie-to-replace-a-regex-with-the-literal-string-0
   	var REPLACE_KEEPS_$0 = (function () {
   	  // eslint-disable-next-line regexp/prefer-escape-replacement-dollar-char -- required for testing
@@ -16907,28 +16844,7 @@
 
   	// @@replace logic
   	fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNative) {
-  	  var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '
-
-    <!--
-      Thanks for trying out our BPMN toolkit!
-
-      This example uses the pre-built distribution of the bpmn-js modeler.
-      Consider rolling your own distribution to have more flexibility
-      regarding which features to include.
-
-      Checkout our advanced examples section to learn more:
-      * https://github.com/bpmn-io/bpmn-js-examples#advanced
-
-      To get a bit broader overview over how bpmn-js works,
-      follow our walkthrough:
-      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
-
-      Related starters:
-      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/viewer.html
-    -->
-  </body>
-</html>
- : '$0';
+  	  var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
 
   	  return [
   	    // `String.prototype.replace` method
@@ -24836,22 +24752,5 @@
 
 </script>
 
-    <!--
-      Thanks for trying out our BPMN toolkit!
-
-      This example uses the pre-built distribution of the bpmn-js modeler.
-      Consider rolling your own distribution to have more flexibility
-      regarding which features to include.
-
-      Checkout our advanced examples section to learn more:
-      * https://github.com/bpmn-io/bpmn-js-examples#advanced
-
-      To get a bit broader overview over how bpmn-js works,
-      follow our walkthrough:
-      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
-
-      Related starters:
-      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/viewer.html
-    -->
   </body>
 </html>
